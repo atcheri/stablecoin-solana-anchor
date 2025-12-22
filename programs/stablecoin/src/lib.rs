@@ -4,6 +4,8 @@ use state::*;
 mod state;
 use constants::*;
 mod constants;
+use instructions::*;
+mod instructions;
 
 declare_id!("2V3QeeZGXpghj7PTHVftMAQhxX5GEZYf5EoiWHDtLhhF");
 
@@ -11,9 +13,12 @@ declare_id!("2V3QeeZGXpghj7PTHVftMAQhxX5GEZYf5EoiWHDtLhhF");
 pub mod stablecoin {
     use super::*;
 
-    pub fn initialize(ctx: Context<Initialize>) -> Result<()> {
-        msg!("Greetings from: {:?}", ctx.program_id);
-        Ok(())
+    pub fn initialize_config(ctx: Context<InitializeConfig>) -> Result<()> {
+        process_initialize_config(ctx)
+    }
+
+    pub fn update_config(ctx: Context<UpdateConfig>, min_health_factor: u64) -> Result<()> {
+        process_update_config(ctx, min_health_factor)
     }
 }
 
