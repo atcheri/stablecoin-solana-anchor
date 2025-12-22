@@ -1,5 +1,10 @@
 use anchor_lang::prelude::*;
 
+use state::*;
+mod state;
+use constants::*;
+mod constants;
+
 declare_id!("2V3QeeZGXpghj7PTHVftMAQhxX5GEZYf5EoiWHDtLhhF");
 
 #[program]
