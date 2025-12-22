@@ -36,7 +36,7 @@ pub struct InitializeConfig<'info> {
         mint::freeze_authority = mint_account,
         mint::token_program = token_program
     )]
-    pub mint_account: Interface<'info, Mint>,
+    pub mint_account: InterfaceAccount<'info, Mint>,
     pub token_program: Program<'info, Token2022>,
     pub system_program: Program<'info, System>,
 }
