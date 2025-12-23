@@ -3,11 +3,11 @@ use anchor_spl::{
     associated_token::AssociatedToken,
     token_interface::{ Mint, Token2022, TokenAccount },
 };
-use pyth_solana_receiver_sdk::price_update::PriceUpdateV2;
+use pyth_solana_receiver_sdk::{ check, price_update::PriceUpdateV2 };
 
 use crate::{
     constants::{ SEED_COLLATERAL_ACCOUNT, SEED_CONFIG_ACCOUNT, SEED_SOL_ACCOUNT },
-    instructions::{ deposit_sol, mint_tokens },
+    instructions::{ check_health_factor, deposit_sol, mint_tokens },
     state::{ Collateral, Config },
 };
 
@@ -69,6 +69,12 @@ pub fn process_deposit_collateral_mint_tokens(
         collateral_account.bump = ctx.bumps.collateral_account;
         collateral_account.bump_sol_account = ctx.bumps.sol_account;
     }
+
+    check_health_factor(
+        &ctx.accounts.collateral_account,
+        &ctx.accounts.config_account,
+        &ctx.accounts.price_update
+    )?;
 
     deposit_sol(
         &ctx.accounts.depositor,
