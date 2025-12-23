@@ -38,6 +38,10 @@ pub mod stablecoin {
     ) -> Result<()> {
         process_redeem_collatera_burn_tokens(ctx, amount_collateral, amount_to_burn)
     }
+
+    pub fn liquidate(ctx: Context<Liquidate>, amount_to_burn: u64) -> Result<()> {
+        process_liquidate(ctx, amount_to_burn)
+    }
 }
 
 #[derive(Accounts)]
