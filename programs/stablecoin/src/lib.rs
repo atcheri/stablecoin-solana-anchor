@@ -30,6 +30,14 @@ pub mod stablecoin {
     ) -> Result<()> {
         process_deposit_collateral_mint_tokens(ctx, amount_collateral, amount_to_mint)
     }
+
+    pub fn redeem_collateral_and_burn_tokens(
+        ctx: Context<RedeemCollateralBurnTokens>,
+        amount_collateral: u64,
+        amount_to_burn: u64
+    ) -> Result<()> {
+        process_redeem_collatera_burn_tokens(ctx, amount_collateral, amount_to_burn)
+    }
 }
 
 #[derive(Accounts)]

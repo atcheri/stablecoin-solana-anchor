@@ -3,7 +3,7 @@ use anchor_spl::{
     associated_token::AssociatedToken,
     token_interface::{ Mint, Token2022, TokenAccount },
 };
-use pyth_solana_receiver_sdk::{ check, price_update::PriceUpdateV2 };
+use pyth_solana_receiver_sdk::{ price_update::PriceUpdateV2 };
 
 use crate::{
     constants::{ SEED_COLLATERAL_ACCOUNT, SEED_CONFIG_ACCOUNT, SEED_SOL_ACCOUNT },
